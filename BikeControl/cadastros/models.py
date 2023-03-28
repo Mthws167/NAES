@@ -31,7 +31,6 @@ class Empresa(models.Model):
     documento = models.CharField(max_length=18,
                                  unique=True,
                                  help_text="Insira seu CNPJ")
-    senha = models.CharField(max_length=50)
     administrador = models.ForeignKey(Administrador, on_delete=models.PROTECT)
     dataCriacao = models.DateTimeField(auto_now_add=True)
     dataAtualizacao = models.DateTimeField(auto_now=True)
