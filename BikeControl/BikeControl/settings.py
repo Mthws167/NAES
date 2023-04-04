@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "paginas.apps.PaginasConfig",
     "cadastros.apps.CadastrosConfig",
     "crispy_forms",
-    "crispy_bootstraps",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
