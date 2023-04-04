@@ -11,18 +11,20 @@
 {% endblock %}
 
 {% block conteudo %}
-<h3 class = "mt-5">Formulário de cadastro e edição<h3>
 
 <form action="" method="post">
-      
+
+    <div class="container">
+        <h3 class="mt-5">Formulário de cadastro e edição</h3>
         {% csrf_token %}
-            
+
         {{ form|crispy }}
 
-       
-    <button type="submit" class="btn btn-primary">
-        Salvar
-    </button>
+
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+    </div>
 </form>
 
 
