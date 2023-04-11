@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import EmpresaCreate, EmpresaUpdate
-from .views import AdministradorCreate, AdministradorUpdate
-from .views import ClienteCreate, ClienteUpdate
-from .views import MarcaCreate, MarcaUpdate
-from .views import ModeloCreate, ModeloUpdate
-from .views import MotoCreate, ModeloUpdate
-from .views import VendaCreate, VendaUpdate
+from .views import EmpresaCreate, EmpresaUpdate, EmpresaDelete
+from .views import AdministradorCreate, AdministradorUpdate, AdministradorDelete
+from .views import ClienteCreate, ClienteUpdate , ClienteDelete
+from .views import MarcaCreate, MarcaUpdate, MarcaDelete
+from .views import ModeloCreate, ModeloUpdate, ModeloDelete
+from .views import MotoCreate, MotoUpdate, MotoDelete
+from .views import VendaCreate, VendaUpdate, VendaDelete
 
 
 urlpatterns = [
@@ -21,9 +21,20 @@ urlpatterns = [
     ## URL UPDATE
     path("editar/empresa/<int:pk>/",EmpresaUpdate.as_view(), name="editar-empresa"),
     path("editar/administrador/<int:pk>/",AdministradorUpdate.as_view(),name="editar-administrador"),
-    path("cadastrar/cliente/<int:pk>/",ClienteCreate.as_view(), name="editar-cliente"),
-    path("cadastrar/marca/<int:pk>/",MarcaCreate.as_view(), name="editar-marca"),
-    path("cadastrar/modelo/<int:pk>/",ModeloCreate.as_view(), name="editar-modelo"),
-    path("cadastrar/moto/<int:pk>/",MotoCreate.as_view(), name="editar-moto"),
-    path("cadastrar/venda/<int:pk>/",VendaCreate.as_view(), name="editar-venda"),
+    path("editar/cliente/<int:pk>/",ClienteUpdate.as_view(), name="editar-cliente"),
+    path("editar/marca/<int:pk>/",MarcaUpdate.as_view(), name="editar-marca"),
+    path("editar/modelo/<int:pk>/",ModeloUpdate.as_view(), name="editar-modelo"),
+    path("editar/moto/<int:pk>/",MotoUpdate.as_view(), name="editar-moto"),
+    path("editar/venda/<int:pk>/",VendaUpdate.as_view(), name="editar-venda"),
+
+    ## URL LIST
+
+    ## URL DELETE
+    path("excluir/empresa/<int:pk>/",EmpresaDelete.as_view(), name="editar-empresa"),
+    path("excluir/administrador/<int:pk>/",AdministradorDelete.as_view(),name="editar-administrador"),
+    path("excluir/cliente/<int:pk>/",ClienteDelete.as_view(), name="editar-cliente"),
+    path("excluir/marca/<int:pk>/",MarcaDelete.as_view(), name="editar-marca"),
+    path("excluir/modelo/<int:pk>/",ModeloDelete.as_view(), name="editar-modelo"),
+    path("excluir/moto/<int:pk>/",MotoDelete.as_view(), name="editar-moto"),
+    path("excluir/venda/<int:pk>/",VendaDelete.as_view(), name="editar-venda"),
 ]
