@@ -1,0 +1,58 @@
+{% extends "paginas/modelo.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block menu %}
+{% endblock %}
+
+{% block titulo %}
+{% endblock %}
+
+{% block conteudo %}
+
+<form action="" method="post">
+
+    <div class="container">
+        <h3 class="mt-3 border-bottom">Lista de Empresa</h3>
+        {% csrf_token %}
+
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>E-mail</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Administrador</th>
+                <th>Data Criação</th>
+                <th>Data Atualização</th>
+                <th>Opções</th>
+            </tr>
+            {% for obejct in object_list %}
+            <tr>
+                <td>{{obejct.pk}}</td>
+                <td>{{obejct.email}}</td>
+                <td>{{obejct.nome}}</td>
+                <td>{{obejct.telefone}}</td>
+                <td>{{obejct.administrador.nome}}</td>
+                <td>{{obejct.dataCriacao}}</td>
+                <td>{{obejct.dataAtulizacao}}</td>
+                <td>
+                    editar excluir
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma empresa cadastrada!</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+    </div>
+   
+</form>
+
+
+{% endblock %}
