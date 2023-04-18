@@ -19,22 +19,11 @@ class EmpresaCreate(LoginRequiredMixin ,CreateView):
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Cadastro de Empresa"
-        return dados
-
-
 class AdministradorCreate(LoginRequiredMixin ,CreateView):
     model = Administrador
     fields = ['nome', 'email', 'telefone','dataNascimento', 'documento','senha']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('pagina-inicial')
-
-    def get_context_data(self, *args, **kwargs):
-        dados = super().get_context_data(*args, **kwargs)
-        dados["titulo"] = "Cadastro de Administrador"
-        return dados
 
 class ClienteCreate(LoginRequiredMixin ,CreateView):
     model = Cliente
@@ -43,21 +32,11 @@ class ClienteCreate(LoginRequiredMixin ,CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Cadastro de Cliente"
-        return dados
-
 class MarcaCreate(LoginRequiredMixin ,CreateView):
     model = Marca
     fields = ['nome', 'pais', 'status']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')   
-
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Cadastro de Marca"
-        return dados 
 
 class ModeloCreate(LoginRequiredMixin ,CreateView):
     model = Modelo
@@ -65,33 +44,17 @@ class ModeloCreate(LoginRequiredMixin ,CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Cadastro de Modelo"
-        return dados
-
-
 class MotoCreate(LoginRequiredMixin ,CreateView):
     model = Moto
     fields = ['modelo', 'quantidade', 'preco', 'status']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Cadastro de Moto"
-        return dados
-
 class VendaCreate(LoginRequiredMixin ,CreateView):
     model = Venda
     fields = ['empresa', 'cliente','moto']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial') 
-
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Cadastro de Venda"
-        return dados
 
 
 #######################################     UPDATE   ######################################################

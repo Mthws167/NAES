@@ -10,13 +10,13 @@ from .views import VendaCreate, VendaUpdate, VendaDelete,VendaList
 
 urlpatterns = [
     ## URL CREATE
-    path("cadastrar/empresa/", EmpresaCreate.as_view(), name="cadastrar-empresa"),
-    path("cadastrar/administrador/", AdministradorCreate.as_view(), name="cadastrar-administrador"),
-    path("cadastrar/cliente/", ClienteCreate.as_view(), name="cadastrar-cliente"),
-    path("cadastrar/marca/", MarcaCreate.as_view(), name="cadastrar-marca"),
-    path("cadastrar/modelo/", ModeloCreate.as_view(), name="cadastrar-modelo"),
-    path("cadastrar/moto/", MotoCreate.as_view(), name="cadastrar-moto"),
-    path("cadastrar/venda/", VendaCreate.as_view(), name="cadastrar-venda"),
+    path("cadastrar/empresa/", EmpresaCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Empresa"}), name="cadastrar-empresa"),
+    path("cadastrar/administrador/", AdministradorCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Administrador"}), name="cadastrar-administrador"),
+    path("cadastrar/cliente/", ClienteCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Cliente"}), name="cadastrar-cliente"),
+    path("cadastrar/marca/", MarcaCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Marca"}), name="cadastrar-marca"),
+    path("cadastrar/modelo/", ModeloCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Modelo"}), name="cadastrar-modelo"),
+    path("cadastrar/moto/", MotoCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Moto"}), name="cadastrar-moto"),
+    path("cadastrar/venda/", VendaCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Venda"}), name="cadastrar-venda"),
 
     ## URL UPDATE
     path("editar/empresa/<int:pk>/",EmpresaUpdate.as_view(), name="editar-empresa"),
