@@ -97,7 +97,7 @@ class ModeloUpdate(LoginRequiredMixin ,UpdateView):
 
 class MotoUpdate(LoginRequiredMixin ,UpdateView):
     model = Moto
-    fields = ['modelo', 'datafabricacao', 'quantidade', 'preco']
+    fields = ['modelo', 'quantidade', 'preco']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
@@ -112,7 +112,6 @@ class VendaUpdate(LoginRequiredMixin ,UpdateView):
 #######################################     DELETE   ######################################################
 class EmpresaDelete(LoginRequiredMixin ,DeleteView):
     model = Empresa
-    fields = ['nome', 'email', 'telefone', 'documento']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('pagina-inicial')
 
@@ -154,37 +153,37 @@ class VendaDelete(LoginRequiredMixin ,DeleteView):
 
     
 #######################################     LIST   ######################################################
-class EmpresaList(ListView):
+class EmpresaList(LoginRequiredMixin, ListView):
     model = Empresa
     template_name = "cadastros/empresa_list.html"
 
 
-class AdministradorList(ListView):
+class AdministradorList(LoginRequiredMixin ,ListView):
     model = Administrador
     template_name = "cadastros/administrador_list.html"
 
 
-class ClienteList(ListView):
+class ClienteList(LoginRequiredMixin ,ListView):
     model = Cliente
     template_name = "cadastros/cliente_list.html"
 
 
-class MarcaList(ListView):
+class MarcaList(LoginRequiredMixin ,ListView):
     model = Marca
     template_name = "cadastros/marca_list.html"
 
 
-class ModeloList(ListView):
+class ModeloList(LoginRequiredMixin ,ListView):
     model = Modelo
     template_name = "cadastros/modelo_list.html"
 
 
-class MotoList(ListView):
+class MotoList(LoginRequiredMixin ,ListView):
     model = Moto
     template_name = "cadastros/moto_list.html"
 
 
-class VendaList(ListView):
+class VendaList(LoginRequiredMixin, ListView):
     model = Venda
     template_name = "cadastros/venda_list.html"
 

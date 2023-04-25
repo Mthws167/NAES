@@ -33,7 +33,10 @@
                 <td>{{obejct.pais}}</td>
                 <td>{{obejct.status}}</td>
                 <td>
-                    editar excluir
+                    <button type="button" class="btn btn-warning"><a href="{% url 'editar-marca' obejct.pk %}"
+                            style="color: white;">Editar</a></button>
+                    <button type="button" class="btn btn-danger"><a href="{% url 'excluir-marca' obejct.pk %}"
+                            style="color: white;">Excluir</a></button>
                 </td>
             </tr>
             {% empty %}

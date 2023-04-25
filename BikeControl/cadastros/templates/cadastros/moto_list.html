@@ -23,6 +23,7 @@
                 <th>ID</th>
                 <th>Modelo</th>
                 <th>Marca</th>
+                <th>Data Fabricação</th>
                 <th>Quantidade</th>
                 <th>Status</th>
                 <th>Preço</th>
@@ -33,11 +34,15 @@
                 <td>{{obejct.pk}}</td>
                 <td>{{obejct.modelo.nome}}</td>
                 <td>{{obejct.modelo.marca.nome}}</td>
+                <td>{{obejct.dataFabricacao}}</td>
                 <td>{{obejct.quantidade}}</td>
                 <td>{{obejct.status}}</td>
                 <td>R$ {{obejct.preco}}</td>
                 <td>
-                    editar excluir
+                    <button type="button" class="btn btn-warning"><a href="{% url 'editar-moto' obejct.pk %}"
+                            style="color: white;">Editar</a></button>
+                    <button type="button" class="btn btn-danger"><a href="{% url 'excluir-moto' obejct.pk %}"
+                            style="color: white;">Excluir</a></button>
                 </td>
             </tr>
             {% empty %}
