@@ -112,43 +112,43 @@ class VendaUpdate(LoginRequiredMixin ,UpdateView):
 #######################################     DELETE   ######################################################
 class EmpresaDelete(LoginRequiredMixin ,DeleteView):
     model = Empresa
-    template_name = "cadastros/form.html"
+    template_name = "cadastros/form-delete.html"
     success_url = reverse_lazy('pagina-inicial')
 
 
 class AdministradorDelete(LoginRequiredMixin ,DeleteView):
     model = Administrador
-    template_name = "cadastros/form.html"
+    template_name = "cadastros/form-delete.html"
     success_url = reverse_lazy('pagina-inicial')
 
 
 class ClienteDelete(LoginRequiredMixin ,DeleteView):
     model = Cliente
-    template_name = 'cadastros/form.html'
+    template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('pagina-inicial')
 
 
 class MarcaDelete(LoginRequiredMixin ,DeleteView):
     model = Marca
-    template_name = 'cadastros/form.html'
+    template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('pagina-inicial')
 
 
 class ModeloDelete(LoginRequiredMixin ,DeleteView):
     model = Modelo
-    template_name = 'cadastros/form.html'
+    template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('pagina-inicial')
 
 
 class MotoDelete(LoginRequiredMixin ,DeleteView):
     model = Moto
-    template_name = 'cadastros/form.html'
+    template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('pagina-inicial')
 
 
 class VendaDelete(LoginRequiredMixin ,DeleteView):
     model = Venda
-    template_name = 'cadastros/form.html'
+    template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('pagina-inicial')
 
     

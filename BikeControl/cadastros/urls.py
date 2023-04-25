@@ -28,13 +28,13 @@ urlpatterns = [
     path("editar/venda/<int:pk>/",VendaUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Venda"}), name="editar-venda"),
 
     ## URL DELETE
-    path("excluir/empresa/<int:pk>/",EmpresaDelete.as_view(), name="excluir-empresa"),
-    path("excluir/administrador/<int:pk>/",AdministradorDelete.as_view(),name="excluir-administrador"),
-    path("excluir/cliente/<int:pk>/",ClienteDelete.as_view(), name="excluir-cliente"),
-    path("excluir/marca/<int:pk>/",MarcaDelete.as_view(), name="excluir-marca"),
-    path("excluir/modelo/<int:pk>/",ModeloDelete.as_view(), name="excluir-modelo"),
-    path("excluir/moto/<int:pk>/",MotoDelete.as_view(), name="excluir-moto"),
-    path("excluir/venda/<int:pk>/",VendaDelete.as_view(), name="excluir-venda"),
+    path("excluir/empresa/<int:pk>/",EmpresaDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Empresa ?"}), name="excluir-empresa"),
+    path("excluir/administrador/<int:pk>/",AdministradorDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Administrador ?"}),name="excluir-administrador"),
+    path("excluir/cliente/<int:pk>/",ClienteDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Cliente ?"}), name="excluir-cliente"),
+    path("excluir/marca/<int:pk>/",MarcaDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Marca ?"}), name="excluir-marca"),
+    path("excluir/modelo/<int:pk>/",ModeloDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Modelo ?"}), name="excluir-modelo"),
+    path("excluir/moto/<int:pk>/",MotoDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Moto ?"}), name="excluir-moto"),
+    path("excluir/venda/<int:pk>/",VendaDelete.as_view(template_name="cadastros/form-delete.html",extra_context={"titulo": "Excluir Venda ?"}), name="excluir-venda"),
 
     ## URL LIST
     path("listar/empresa/", EmpresaList.as_view(), name="listar-empresa"),
