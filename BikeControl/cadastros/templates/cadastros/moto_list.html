@@ -1,0 +1,56 @@
+{% extends "paginas/modelo.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block menu %}
+{% endblock %}
+
+{% block titulo %}
+{% endblock %}
+
+{% block conteudo %}
+
+<form action="" method="post">
+
+    <div class="container">
+        <h3 class="mt-3 border-bottom">Lista de Motos</h3>
+        {% csrf_token %}
+
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+                <th>Preço</th>
+                <th>Opções</th>
+            </tr>
+            {% for obejct in object_list %}
+            <tr>
+                <td>{{obejct.pk}}</td>
+                <td>{{obejct.modelo.nome}}</td>
+                <td>{{obejct.modelo.marca.nome}}</td>
+                <td>{{obejct.quantidade}}</td>
+                <td>{{obejct.status}}</td>
+                <td>R$ {{obejct.preco}}</td>
+                <td>
+                    editar excluir
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma moto cadastrada!</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+    </div>
+   
+</form>
+
+
+{% endblock %}

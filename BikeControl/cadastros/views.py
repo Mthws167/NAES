@@ -64,11 +64,6 @@ class EmpresaUpdate(LoginRequiredMixin ,UpdateView):
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Empresa"
-        return dados
-
 
 class AdministradorUpdate(LoginRequiredMixin ,UpdateView):
     model = Administrador
@@ -76,11 +71,6 @@ class AdministradorUpdate(LoginRequiredMixin ,UpdateView):
               'dataNascimento', 'documento', 'senha']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('pagina-inicial')
-
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Administrador"
-        return dados
 
 
 class ClienteUpdate(LoginRequiredMixin ,UpdateView):
@@ -90,22 +80,12 @@ class ClienteUpdate(LoginRequiredMixin ,UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Cliente"
-        return dados
-
 
 class MarcaUpdate(LoginRequiredMixin ,UpdateView):
     model = Marca
     fields = ['nome', 'pais']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
-
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Marca"
-        return dados
 
 
 class ModeloUpdate(LoginRequiredMixin ,UpdateView):
@@ -114,11 +94,6 @@ class ModeloUpdate(LoginRequiredMixin ,UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Modelo"
-        return dados
-
 
 class MotoUpdate(LoginRequiredMixin ,UpdateView):
     model = Moto
@@ -126,22 +101,12 @@ class MotoUpdate(LoginRequiredMixin ,UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
 
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Moto"
-        return dados
-
 
 class VendaUpdate(LoginRequiredMixin ,UpdateView):
     model = Venda
     fields = ['empresa', 'cliente', 'moto']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('pagina-inicial')
-
-    def get_context_data(self, *args,**kwargs):
-        dados = super().get_context_data(*args,**kwargs)
-        dados["titulo"]="Atualizar Venda"
-        return dados
 
 
 #######################################     DELETE   ######################################################
@@ -189,37 +154,37 @@ class VendaDelete(LoginRequiredMixin ,DeleteView):
 
     
 #######################################     LIST   ######################################################
-class EmpresaList(LoginRequiredMixin ,ListView):
+class EmpresaList(ListView):
     model = Empresa
     template_name = "cadastros/empresa_list.html"
 
 
-class AdministradorList(LoginRequiredMixin ,ListView):
+class AdministradorList(ListView):
     model = Administrador
     template_name = "cadastros/administrador_list.html"
 
 
-class ClienteList(LoginRequiredMixin ,ListView):
+class ClienteList(ListView):
     model = Cliente
     template_name = "cadastros/cliente_list.html"
 
 
-class MarcaList(LoginRequiredMixin ,ListView):
+class MarcaList(ListView):
     model = Marca
     template_name = "cadastros/marca_list.html"
 
 
-class ModeloList(LoginRequiredMixin ,ListView):
+class ModeloList(ListView):
     model = Modelo
     template_name = "cadastros/modelo_list.html"
 
 
-class MotoList(LoginRequiredMixin ,ListView):
+class MotoList(ListView):
     model = Moto
     template_name = "cadastros/moto_list.html"
 
 
-class VendaList(LoginRequiredMixin ,ListView):
+class VendaList(ListView):
     model = Venda
     template_name = "cadastros/venda_list.html"
 

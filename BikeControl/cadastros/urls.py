@@ -19,13 +19,13 @@ urlpatterns = [
     path("cadastrar/venda/", VendaCreate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Cadastrar Venda"}), name="cadastrar-venda"),
 
     ## URL UPDATE
-    path("editar/empresa/<int:pk>/",EmpresaUpdate.as_view(), name="editar-empresa"),
-    path("editar/administrador/<int:pk>/",AdministradorUpdate.as_view(),name="editar-administrador"),
-    path("editar/cliente/<int:pk>/",ClienteUpdate.as_view(), name="editar-cliente"),
-    path("editar/marca/<int:pk>/",MarcaUpdate.as_view(), name="editar-marca"),
-    path("editar/modelo/<int:pk>/",ModeloUpdate.as_view(), name="editar-modelo"),
-    path("editar/moto/<int:pk>/",MotoUpdate.as_view(), name="editar-moto"),
-    path("editar/venda/<int:pk>/",VendaUpdate.as_view(), name="editar-venda"),
+    path("editar/empresa/<int:pk>/",EmpresaUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Empresa"}), name="editar-empresa"),
+    path("editar/administrador/<int:pk>/",AdministradorUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Administrador"}),name="editar-administrador"),
+    path("editar/cliente/<int:pk>/",ClienteUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Cliente"}), name="editar-cliente"),
+    path("editar/marca/<int:pk>/",MarcaUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Marca"}), name="editar-marca"),
+    path("editar/modelo/<int:pk>/",ModeloUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Modelo"}), name="editar-modelo"),
+    path("editar/moto/<int:pk>/",MotoUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Moto"}), name="editar-moto"),
+    path("editar/venda/<int:pk>/",VendaUpdate.as_view(template_name="cadastros/form.html",extra_context={"titulo": "Editar Venda"}), name="editar-venda"),
 
     ## URL DELETE
     path("excluir/empresa/<int:pk>/",EmpresaDelete.as_view(), name="editar-empresa"),

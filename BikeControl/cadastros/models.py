@@ -60,7 +60,7 @@ class Cliente(models.Model):
 
 class Marca(models.Model):
     nome = models.CharField(max_length=80)
-    pais = models.CharField(max_length=50)
+    pais = models.CharField(max_length=50, verbose_name="País")
     status = models.BooleanField(verbose_name="Ativo")
 
     def __str__(self):
