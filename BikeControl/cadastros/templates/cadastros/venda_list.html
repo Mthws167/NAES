@@ -35,39 +35,37 @@
 <form action="" method="post">
 
     <div class="container">
-        <h3 class="mt-3 border-bottom">Lista de Motos</h3>
+        <h3 class="mt-3 border-bottom">Lista de Vendas</h3>
         {% csrf_token %}
 
         <table class="table table-striped">
             <tr>
                 <th>ID</th>
-                <th>Modelo</th>
-                <th>Marca</th>
-                <th>Data Fabricação</th>
-                <th>Quantidade</th>
-                <th>Status</th>
-                <th>Preço Unitário</th>
+                <th>Empresa</th>
+                <th>Moto</th>
+                <th>Data Venda</th>
+                <th>Cliente</th>
+                <th>Valor</th>
                 <th>Opções</th>
             </tr>
             {% for obejct in object_list %}
             <tr>
                 <td>{{obejct.pk}}</td>
-                <td>{{obejct.modelo.nome}}</td>
-                <td>{{obejct.modelo.marca.nome}}</td>
-                <td>{{obejct.dataFabricacao}}</td>
-                <td>{{obejct.quantidade}}</td>
-                <td>{{obejct.status}}</td>
-                <td>R$ {{obejct.preco}}</td>
+                <td>{{obejct.empresa.nome}}</td>
+                <td>{{obejct.moto.modelo.nome}}</td>
+                <td>{{obejct.dataVenda}}</td>
+                <td>{{obejct.cliente.nome}}</td>
+                <td>R${{obejct.moto.preco}}</td>
                 <td>
-                    <button type="button" class="btn btn-warning"><a href="{% url 'editar-moto' obejct.pk %}"
+                    <button type="button" class="btn btn-warning"><a href="{% url 'editar-venda' obejct.pk %}"
                             style="color: white;">Editar</a></button>
-                    <button type="button" class="btn btn-danger"><a href="{% url 'excluir-moto' obejct.pk %}"
+                    <button type="button" class="btn btn-danger"><a href="{% url 'excluir-venda' obejct.pk %}"
                             style="color: white;">Excluir</a></button>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="3">Nenhuma moto cadastrada!</td>
+                <td colspan="3">Nenhuma venda cadastrada!</td>
             </tr>
             {% endfor %}
         </table>

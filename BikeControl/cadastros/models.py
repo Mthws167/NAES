@@ -80,7 +80,7 @@ class Moto(models.Model):
     dataFabricacao = models.DateTimeField(auto_now_add=True)
     quantidade = models.IntegerField()
     status = models.BooleanField(verbose_name="Ativo")
-    preco = models.FloatField(verbose_name="Preço")
+    preco = models.FloatField(verbose_name="Preço Unitário")
 
     def __str__(self):
         return f"{self.modelo.nome} - {self.preco}"
