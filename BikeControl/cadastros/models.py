@@ -81,12 +81,18 @@ class Moto(models.Model):
 
     def __str__(self):
         return f"{self.modelo.nome} - {self.preco}"
-
-class Venda(models.Model):
-    empresa = models.ForeignKey(Empresa, on_delete = models.PROTECT)
-    cliente = models.ForeignKey(Cliente, on_delete = models.PROTECT)
-    moto = models.ForeignKey(Moto, on_delete = models.PROTECT)
+    
+class MotoVenda(models.Model):
+    empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT)
+    cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
+    moto = models.ForeignKey(Moto, on_delete=models.PROTECT)
     dataVenda = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.moto.modelo.nome} - {self.moto.preco}"
+
+class Venda(models.Model):
+    motoVenda = models.ForeignKey(MotoVenda, on_delete=models.PROTECT)
+    
     def __str__(self):
         return f"{self.moto.modelo.nome} - {self.moto.preco}"
