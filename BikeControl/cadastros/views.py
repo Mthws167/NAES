@@ -34,19 +34,19 @@ class ClienteCreate(LoginRequiredMixin ,CreateView):
 
 class MarcaCreate(LoginRequiredMixin ,CreateView):
     model = Marca
-    fields = ['nome', 'pais', 'status']
+    fields = ['nome', 'pais']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-marca')
 
 class ModeloCreate(LoginRequiredMixin ,CreateView):
     model = Modelo
-    fields = ['nome', 'marca', 'status']
+    fields = ['nome', 'marca']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelo')
 
 class MotoCreate(LoginRequiredMixin ,CreateView):
     model = Moto
-    fields = ['modelo', 'quantidade', 'preco', 'status']
+    fields = ['modelo', 'quantidade', 'preco']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-moto')
 

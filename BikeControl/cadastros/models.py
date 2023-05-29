@@ -14,8 +14,8 @@ class Administrador(models.Model):
                                  unique=True,
                                  help_text="Insira seu CPF")
     senha = models.CharField(max_length=50)
-    dataCriacao = models.DateTimeField(auto_now_add=True)
-    dataAtualizacao = models.DateTimeField(auto_now=True)
+    dataCriacao = models.DateField(auto_now_add=True)
+    dataAtualizacao = models.DateField(auto_now=True)
 
     def __str__(self):
         return f"{self.nome} - {self.telefone}"
@@ -32,8 +32,8 @@ class Empresa(models.Model):
                                  unique=True,
                                  help_text="Insira seu CNPJ")
     administrador = models.ForeignKey(Administrador, on_delete=models.PROTECT)
-    dataCriacao = models.DateTimeField(auto_now_add=True)
-    dataAtualizacao = models.DateTimeField(auto_now=True)
+    dataCriacao = models.DateField(auto_now_add=True)
+    dataAtualizacao = models.DateField(auto_now=True)
 
     def __str__(self):
         return f"{self.nome} - {self.documento}"
@@ -51,8 +51,8 @@ class Cliente(models.Model):
                                  unique=True,
                                  help_text="Insira seu CPF")
     senha = models.CharField(max_length=50)
-    dataCriacao = models.DateTimeField(auto_now_add=True)
-    dataAtualizacao = models.DateTimeField(auto_now=True)
+    dataCriacao = models.DateField(auto_now_add=True)
+    dataAtualizacao = models.DateField(auto_now=True)
 
     def __str__(self):
         return f"{self.nome} - {self.telefone}"
@@ -61,7 +61,6 @@ class Cliente(models.Model):
 class Marca(models.Model):
     nome = models.CharField(max_length=80)
     pais = models.CharField(max_length=50, verbose_name="País")
-    status = models.BooleanField(verbose_name="Ativo")
 
     def __str__(self):
         return f"{self.nome} - {self.pais}"
@@ -70,16 +69,14 @@ class Marca(models.Model):
 class Modelo(models.Model):
     nome = models.CharField(max_length=50)
     marca = models.ForeignKey(Marca, on_delete=models.PROTECT)
-    status = models.BooleanField(verbose_name="Ativo")
 
     def __str__(self):
         return f"{self.nome} - {self.marca.nome}"
 
 class Moto(models.Model):
     modelo = models.ForeignKey(Modelo, on_delete=models.PROTECT)
-    dataFabricacao = models.DateTimeField(auto_now_add=True)
+    dataFabricacao = models.DateField(auto_now_add=True)
     quantidade = models.IntegerField()
-    status = models.BooleanField(verbose_name="Ativo")
     preco = models.FloatField(verbose_name="Preço Unitário")
 
     def __str__(self):
@@ -89,7 +86,7 @@ class Venda(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete = models.PROTECT)
     cliente = models.ForeignKey(Cliente, on_delete = models.PROTECT)
     moto = models.ForeignKey(Moto, on_delete = models.PROTECT)
-    dataVenda  = models.DateTimeField(auto_now_add=True)
+    dataVenda = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.moto.modelo.nome} - {self.moto.preco}"
