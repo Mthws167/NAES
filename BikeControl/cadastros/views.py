@@ -46,6 +46,7 @@ class ModeloCreate(LoginRequiredMixin ,CreateView):
 
 class MotoCreate(LoginRequiredMixin ,CreateView):
     model = Moto
+
     fields = ['modelo', 'quantidade', 'preco']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-moto')
