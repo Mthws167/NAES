@@ -76,24 +76,33 @@ class Modelo(models.Model):
 class Moto(models.Model):
     modelo = models.ForeignKey(Modelo, on_delete=models.PROTECT)
     dataFabricacao = models.DateTimeField(auto_now_add=True)
-    quantidade = models.IntegerField()
+    quantidade = models.IntegerField(default=1)
     preco = models.FloatField(verbose_name="Preço Unitário")
 
     def __str__(self):
         return f"{self.modelo.nome} - {self.preco}"
     
-# class MotoVenda(models.Model):
-#     empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT)
-#     cliente = models.ForeignKey(Cliente, on_delete = models.PROTECT)
-#     moto = models.ForeignKey(Moto, on_delete = models.PROTECT)
-#     dataVenda = models.DateTimeField(auto_now_add=True)
-#     def __str__(self):
-#         return f"{self.moto.modelo.nome} - {self.moto.preco}"
-
 class Venda(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete = models.PROTECT)
     cliente = models.ForeignKey(Cliente, on_delete = models.PROTECT)
-    moto = models.ForeignKey(Moto, on_delete = models.PROTECT)
     dataVenda = models.DateTimeField(auto_now_add=True)
+    # cadastrado por
     def __str__(self):
         return f"{self.moto.modelo.nome} - {self.moto.preco}"
+
+class MotoVenda(models.Model):
+    venda = models.ForeignKey(Venda, on_delete=models.PROTECT)
+    moto = models.ForeignKey(Moto, on_delete = models.PROTECT)
+    preco = models.FloatField(verbose_name="Preço Unitário")
+    quantidade = models.IntegerField()
+    
+    def __str__(self):
+        return f"{self.moto.modelo.nome} - {self.moto.preco}"
+
+
+class Carrinho(models.Model):
+    moto = models.ForeignKey(Moto, on_delete=models.PROTECT)
+    quantidade = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.moto.modelo.nome} - {self.quantidade}"

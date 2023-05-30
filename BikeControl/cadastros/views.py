@@ -1,4 +1,4 @@
-from .models import Empresa,Administrador,Cliente,Marca,Modelo,Moto,Venda
+from .models import Empresa,Administrador,Cliente,Marca,Modelo,Moto,Venda,Carrinho
 
 from django.urls import reverse_lazy
 
@@ -57,6 +57,11 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-venda')
 
+class CarrinhoCreate(LoginRequiredMixin ,CreateView):
+    model = Carrinho
+    fields = ['moto','quantidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('listar-carrinho')
 
 #######################################     UPDATE   ######################################################
 class EmpresaUpdate(LoginRequiredMixin ,UpdateView):
@@ -109,6 +114,11 @@ class VendaUpdate(LoginRequiredMixin ,UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-venda')
 
+class CarrinhoUpdate(LoginRequiredMixin ,UpdateView):
+    model = Carrinho
+    fields = ['moto', 'quantidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('listar-carrinho')
 
 #######################################     DELETE   ######################################################
 class EmpresaDelete(LoginRequiredMixin ,DeleteView):
@@ -152,6 +162,11 @@ class VendaDelete(LoginRequiredMixin ,DeleteView):
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-venda')
 
+
+class CarrinhoDelete(LoginRequiredMixin, DeleteView):
+    model = Carrinho
+    template_name = 'cadastros/form-delete.html'
+    success_url = reverse_lazy('listar-carrinho')
     
 #######################################     LIST   ######################################################
 class EmpresaList(LoginRequiredMixin, ListView):
@@ -189,5 +204,6 @@ class VendaList(LoginRequiredMixin, ListView):
     template_name = "cadastros/venda_list.html"
 
 
-
-#######################################     DETAIL   ######################################################
+class CarrinhoList(LoginRequiredMixin, ListView):
+    model = Carrinho
+    template_name = "cadastros/carrinho_list.html"
