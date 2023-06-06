@@ -19,6 +19,13 @@ class EmpresaCreate(LoginRequiredMixin ,CreateView):
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('listar-empresa')
 
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
+
 class AdministradorCreate(LoginRequiredMixin ,CreateView):
     model = Administrador
     fields = ['nome', 'email', 'telefone','dataNascimento', 'documento','senha']
@@ -38,11 +45,24 @@ class MarcaCreate(LoginRequiredMixin ,CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-marca')
 
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
+
 class ModeloCreate(LoginRequiredMixin ,CreateView):
     model = Modelo
     fields = ['nome', 'marca']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelo')
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
 
 class MotoCreate(LoginRequiredMixin ,CreateView):
     model = Moto
@@ -51,17 +71,38 @@ class MotoCreate(LoginRequiredMixin ,CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-moto')
 
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
+
 class VendaCreate(LoginRequiredMixin ,CreateView):
     model = Venda
     fields = ['empresa', 'cliente','moto']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-venda')
 
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
+
 class CarrinhoCreate(LoginRequiredMixin ,CreateView):
     model = Carrinho
     fields = ['moto','quantidade']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-carrinho')
+
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
 
 #######################################     UPDATE   ######################################################
 class EmpresaUpdate(LoginRequiredMixin ,UpdateView):

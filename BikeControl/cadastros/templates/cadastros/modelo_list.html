@@ -20,7 +20,6 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Marca</th>
-                <th>Status</th>
                 <th>Opções</th>
             </tr>
             {% for obejct in object_list %}
@@ -28,7 +27,6 @@
                 <td>{{obejct.pk}}</td>
                 <td>{{obejct.nome}}</td>
                 <td>{{obejct.marca.nome}}</td>
-                <td>{{obejct.status}}</td>
                 <td>
                     <button type="button" class="btn btn-warning"><a href="{% url 'editar-modelo' obejct.pk %}"
                             style="color: white;">Editar</a></button>

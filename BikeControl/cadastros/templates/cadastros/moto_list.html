@@ -22,7 +22,6 @@
                 <th>Marca</th>
                 <th>Data Fabricação</th>
                 <th>Quantidade</th>
-                <th>Status</th>
                 <th>Preço Unitário</th>
                 <th>Opções</th>
             </tr>
@@ -33,7 +32,6 @@
                 <td>{{obejct.modelo.marca.nome}}</td>
                 <td>{{obejct.dataFabricacao}}</td>
                 <td>{{obejct.quantidade}}</td>
-                <td>{{obejct.status}}</td>
                 <td>R$ {{obejct.preco}}</td>
                 <td>
                     <button type="button" class="btn btn-warning"><a href="{% url 'editar-moto' obejct.pk %}"
