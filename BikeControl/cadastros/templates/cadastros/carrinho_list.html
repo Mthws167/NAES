@@ -14,7 +14,7 @@
 <form action="" method="post">
 
     <div class="container">
-        <h3 class="mt-3 border-bottom">Lista de Vendas</h3>
+        <h3 class="mt-3 border-bottom">Carrinho</h3>
         {% csrf_token %}
 
         <table class="table table-striped">
@@ -38,7 +38,7 @@
             </tr>
             {% empty %}
             <tr>
-                <td colspan="3">Nenhuma venda cadastrada!</td>
+                <td colspan="3">Nenhum item cadastrado!</td>
             </tr>
             {% endfor %}
         </table>
