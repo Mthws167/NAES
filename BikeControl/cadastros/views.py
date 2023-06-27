@@ -1,4 +1,4 @@
-from .models import Empresa,Administrador,Cliente,Marca,Modelo,Moto,Venda,Carrinho
+from .models import Empresa,Administrador,Cliente,Marca,Modelo,Moto,Venda,Carrinho,MotoVenda
 
 from django.urls import reverse_lazy
 
@@ -87,7 +87,37 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
 
+        # Define um valor porque é obrigatório
+        form.instance.valor_total = 0.0
+
         url = super().form_valid(form)
+
+        prod_carrinho = Carrinho.objects.all()
+
+        valor_total = 0.0
+        moto = Moto()
+
+        for c in prod_carrinho:
+
+            valor_total += (float(c.moto.preco) * c.quantidade)
+
+            moto = c.moto
+
+            MotoVenda.objects.create(
+                venda=self.object,
+                moto=c.moto,
+                preco=c.moto.preco * c.quantidade,
+                quantidade=c.quantidade
+            )
+            
+            c.delete()
+
+        # Atualiza o objedo da venda com o valor total novo
+        self.object.valor_total = valor_total
+        self.object.moto = moto
+        self.object.valor = valor_total
+        # Faz o UPDATE no banco de dados
+        self.object.save()
 
         return url
 

@@ -104,6 +104,8 @@ class Moto(models.Model):
 class Venda(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT)
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
+    moto = models.ForeignKey(Moto, on_delete=models.PROTECT)
+    valor = models.FloatField()
     dataVenda = models.DateTimeField(auto_now_add=True)
 
     # cadastrado por

@@ -25,18 +25,16 @@
                 <th>Valor</th>
                 <th>Opções</th>
             </tr>
-            {% for obejct in object_list %}
+            {% for object in object_list %}
             <tr>
-                <td>{{obejct.pk}}</td>
-                <td>{{obejct.empresa.nome}}</td>
-                <td>{{obejct.moto.modelo.nome}}</td>
-                <td>{{obejct.dataVenda}}</td>
-                <td>{{obejct.cliente.nome}}</td>
-                <td>R${{obejct.moto.preco}}</td>
+                <td>{{object.pk}}</td>
+                <td>{{object.empresa.nome}}</td>
+                <td>{{object.moto.modelo.nome}}</td>
+                <td>{{object.dataVenda}}</td>
+                <td>{{object.cliente.nome}}</td>
+                <td>R${{object.moto.preco}}</td>
                 <td>
-                    <button type="button" class="btn btn-warning"><a href="{% url 'editar-venda' obejct.pk %}"
-                            style="color: white;">Editar</a></button>
-                    <button type="button" class="btn btn-danger"><a href="{% url 'excluir-venda' obejct.pk %}"
+                    <button type="button" class="btn btn-danger"><a href="{% url 'excluir-venda' object.pk %}"
                             style="color: white;">Excluir</a></button>
                 </td>
             </tr>
