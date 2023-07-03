@@ -47,6 +47,4 @@ urlpatterns = [
     path("listar/moto/", MotoList.as_view(), name="listar-moto"),
     path("listar/venda/", VendaList.as_view(), name="listar-venda"),
     path("listar/carrinho/", CarrinhoList.as_view(), name="listar-carrinho"),
-
-   
 ]

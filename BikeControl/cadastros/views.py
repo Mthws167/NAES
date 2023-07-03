@@ -7,6 +7,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from decimal import Decimal
 
 
 
@@ -87,7 +88,6 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
 
-        # Define um valor porque é obrigatório
         form.instance.valor_total = 0.0
 
         url = super().form_valid(form)
@@ -99,14 +99,14 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
 
         for c in prod_carrinho:
 
-            valor_total += (float(c.moto.preco) * c.quantidade)
-
             moto = c.moto
+
+            valor_total += float(moto.preco) * c.quantidade
 
             MotoVenda.objects.create(
                 venda=self.object,
-                moto=c.moto,
-                preco=c.moto.preco * c.quantidade,
+                moto=moto,
+                preco=moto.preco * c.quantidade,
                 quantidade=c.quantidade
             )
             

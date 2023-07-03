@@ -34,21 +34,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-administrador' %}">Administrador</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="http://127.0.0.1:8000/">Início</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-cliente' %}">Cliente</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-administrador' %}">Administrador</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-empresa' %}">Empresa</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-cliente' %}">Cliente</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-marca' %}">Marca</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-empresa' %}">Empresa</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-modelo' %}">Modelo</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-marca' %}">Marca</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-moto' %}">Moto</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-modelo' %}">Modelo</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-carrinho' %}">Carrinho</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-moto' %}">Moto</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'cadastrar-venda' %}">Venda</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-carrinho' %}">Carrinho</a>
+                    </li>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-venda' %}">Venda</a>
                     </li>
                     <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'sobre' %}">Sobre</a></li>
                     {% if not request.user.is_authenticated %}
