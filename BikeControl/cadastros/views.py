@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from .models import Empresa,Administrador,Cliente,Marca,Modelo,Moto,Venda,Carrinho,MotoVenda
 
 from django.urls import reverse_lazy
@@ -88,14 +90,11 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
 
-        form.instance.valor_total = 0.0
-
         url = super().form_valid(form)
 
         prod_carrinho = Carrinho.objects.all()
 
         valor_total = 0.0
-        moto = Moto()
 
         for c in prod_carrinho:
 
@@ -113,8 +112,6 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
             c.delete()
 
         # Atualiza o objedo da venda com o valor total novo
-        self.object.valor_total = valor_total
-        self.object.moto = moto
         self.object.valor = valor_total
         # Faz o UPDATE no banco de dados
         self.object.save()
@@ -243,38 +240,39 @@ class CarrinhoDelete(LoginRequiredMixin, DeleteView):
 class EmpresaList(LoginRequiredMixin, ListView):
     model = Empresa
     template_name = "cadastros/empresa_list.html"
-
+    paginate_by = 10
 
 class AdministradorList(LoginRequiredMixin ,ListView):
     model = Administrador
     template_name = "cadastros/administrador_list.html"
-
+    paginate_by = 10
 
 class ClienteList(LoginRequiredMixin ,ListView):
     model = Cliente
     template_name = "cadastros/cliente_list.html"
-
+    paginate_by = 10
 
 class MarcaList(LoginRequiredMixin ,ListView):
     model = Marca
     template_name = "cadastros/marca_list.html"
-
+    paginate_by = 10
 
 class ModeloList(LoginRequiredMixin ,ListView):
     model = Modelo
     template_name = "cadastros/modelo_list.html"
-
+    paginate_by = 10
 
 class MotoList(LoginRequiredMixin ,ListView):
     model = Moto
     template_name = "cadastros/moto_list.html"
-
+    paginate_by = 10
 
 class VendaList(LoginRequiredMixin, ListView):
     model = Venda
     template_name = "cadastros/venda_list.html"
-
+    paginate_by = 10
 
 class CarrinhoList(LoginRequiredMixin, ListView):
     model = Carrinho
     template_name = "cadastros/carrinho_list.html"
+    paginate_by = 10

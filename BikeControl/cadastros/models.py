@@ -104,15 +104,14 @@ class Moto(models.Model):
 class Venda(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT)
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
-    moto = models.ForeignKey(Moto, on_delete=models.PROTECT)
-    valor = models.FloatField()
+    valor = models.FloatField(default=0.0)
     dataVenda = models.DateTimeField(auto_now_add=True)
 
     # cadastrado por
     cadastrado_por = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f"[#{self.id}] ({self.moto.modelo.nome} - {self.moto.preco})"
+        return f"[#{self.id}] ({self.cliente.nome} - {self.valor})"
 
 
 class MotoVenda(models.Model):
