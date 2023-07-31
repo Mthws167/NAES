@@ -34,61 +34,74 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="http://127.0.0.1:8000/">Início</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="http://127.0.0.1:8000/">Início</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-administrador' %}">Administrador</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-administrador' %}">Administrador</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-cliente' %}">Cliente</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-cliente' %}">Cliente</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-empresa' %}">Empresa</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-empresa' %}">Empresa</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-marca' %}">Marca</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-marca' %}">Marca</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-modelo' %}">Modelo</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-modelo' %}">Modelo</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-moto' %}">Moto</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-moto' %}">Moto</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-carrinho' %}">Carrinho</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-carrinho' %}">Carrinho</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'listar-venda' %}">Venda</a>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'listar-venda' %}">Venda</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'sobre' %}">Sobre</a></li>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'sobre' %}">Sobre</a></li>
                     {% if not request.user.is_authenticated %}
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'login' %}">Login</a></li>
                     {% else %}
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'logout' %}">Logout</a></li>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
+                            href="{% url 'logout' %}">Logout</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Masthead-->
-    
+
     <header class="masthead" style="background-image: url('../../../static/assets/img/background.png');">
         <div class="container">
             {% block titulo %}
-            <div class="masthead-subheading" style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Welcome To BikeControl!</div>
+            <div class="masthead-subheading" style="color: white; text-shadow: black 0.1em 0.1em 0.2em">Welcome To
+                BikeControl!</div>
             {% endblock %}
         </div>
     </header>
-  
+
     {% block conteudo %}
     <!-- Portfolio Grid-->
     <section class="page-section bg-light" id="portfolio">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Portfolio</h2>
-            </br>
+                </br>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-sm-6">
                     <!-- Portfolio item 6-->
                     <div class="portfolio-item">
-                        <a class="portfolio-link" href="{% url 'listar-moto' %}">
+                        <a class="portfolio-link" href="{% url 'cadastrar-moto' %}">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{%static 'assets/img/portfolio/6.jpg'%}" alt="..." />
+                            <img class="img-fluid" src="{%static 'assets/img/vespa.jpg'%}" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Moto</div>
@@ -98,11 +111,11 @@
                 <div class="col-lg-4 col-sm-6">
                     <!-- Portfolio item 6-->
                     <div class="portfolio-item">
-                        <a class="portfolio-link" href="{% url 'listar-carrinho' %}">
+                        <a class="portfolio-link" href="{% url 'cadastrar-carrinho' %}">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{%static 'assets/img/portfolio/6.jpg'%}" alt="..." />
+                            <img class="img-fluid" src="{%static 'assets/img/kart.jpg'%}" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Carrinho</div>
@@ -112,11 +125,11 @@
                 <div class="col-lg-4 col-sm-6">
                     <!-- Portfolio item 6-->
                     <div class="portfolio-item">
-                        <a class="portfolio-link" href="{% url 'listar-venda' %}">
+                        <a class="portfolio-link" href="{% url 'cadastrar-venda' %}">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{%static 'assets/img/portfolio/6.jpg'%}" alt="..." />
+                            <img class="img-fluid" src="{%static 'assets/img/sale.jpg'%}" alt="..." />
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading">Venda</div>
@@ -151,7 +164,7 @@
     </footer>
 
     {% endblock %}
-   
+
     {% endblock %}
 
     <!-- Bootstrap core JS-->
@@ -171,3 +184,10 @@
 </body>
 
 </html>
+
+<style>
+    .img-fluid {
+        max-width: 100%;
+        height: 300px;
+    }
+</style>

@@ -112,6 +112,12 @@ class Venda(models.Model):
 
     def __str__(self):
         return f"[#{self.id}] ({self.cliente.nome} - {self.valor})"
+    
+    def delete(self, *args, **kwargs):
+        # First, delete associated MotoVenda records.
+        MotoVenda.objects.filter(venda=self).delete()
+        # Call the parent class' delete method to delete the Venda.
+        super().delete(*args, **kwargs)
 
 
 class MotoVenda(models.Model):

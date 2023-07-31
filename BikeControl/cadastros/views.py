@@ -230,7 +230,6 @@ class VendaDelete(LoginRequiredMixin ,DeleteView):
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-venda')
 
-
 class CarrinhoDelete(LoginRequiredMixin, DeleteView):
     model = Carrinho
     template_name = 'cadastros/form-delete.html'
