@@ -108,6 +108,13 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
                 preco=moto.preco * c.quantidade,
                 quantidade=c.quantidade
             )
+
+            Moto.objects.update(
+                modelo = moto.modelo,
+                dataFabricacao= moto.dataFabricacao,
+                quantidade = moto.quantidade - c.quantidade,
+                preco= moto.preco,
+            )
             
             c.delete()
 
