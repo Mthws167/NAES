@@ -11,6 +11,8 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from decimal import Decimal
 
+from braces.views import GroupRequiredMixin
+
 
 
 
@@ -268,7 +270,7 @@ class ModeloList(LoginRequiredMixin ,ListView):
     template_name = "cadastros/modelo_list.html"
     paginate_by = 10
 
-class MotoList(LoginRequiredMixin ,ListView):
+class MotoList(ListView):
     model = Moto
     template_name = "cadastros/moto_list.html"
     paginate_by = 10
