@@ -63,7 +63,7 @@ class Cliente(models.Model):
     dataCriacao = models.DateTimeField(auto_now_add=True)
     dataAtualizacao = models.DateTimeField(auto_now=True)
 
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    cadastrado_por = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self):
         return f"[#{self.id}] ({self.nome} - {self.telefone})"
@@ -115,7 +115,7 @@ class Venda(models.Model):
     
     def delete(self, *args, **kwargs):
         # First, delete associated MotoVenda records.
-        MotoVenda.objects.filter(venda=self).delete()
+        MotoVenda.objects.filter(venda=self.id).delete()
         # Call the parent class' delete method to delete the Venda.
         super().delete(*args, **kwargs)
 

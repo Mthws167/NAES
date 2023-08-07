@@ -11,7 +11,7 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from decimal import Decimal
 
-from braces.views import GroupRequiredMixin
+from dal import autocomplete
 
 
 
@@ -37,12 +37,26 @@ class AdministradorCreate(LoginRequiredMixin ,CreateView):
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('listar-administrador')
 
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
+
 class ClienteCreate(LoginRequiredMixin ,CreateView):
     model = Cliente
     fields = ['nome', 'email', 'telefone',
               'dataNascimento', 'documento', 'senha']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-cliente')
+
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
 
 class MarcaCreate(LoginRequiredMixin ,CreateView):
     model = Marca
@@ -111,12 +125,9 @@ class VendaCreate(LoginRequiredMixin ,CreateView):
                 quantidade=c.quantidade
             )
 
-            Moto.objects.update(
-                modelo = moto.modelo,
-                dataFabricacao= moto.dataFabricacao,
-                quantidade = moto.quantidade - c.quantidade,
-                preco= moto.preco,
-            )
+            # Atualiza apenas as motos no carrinho
+            moto.quantidade -= c.quantidade
+            moto.save()
             
             c.delete()
 
@@ -284,3 +295,16 @@ class CarrinhoList(LoginRequiredMixin, ListView):
     model = Carrinho
     template_name = "cadastros/carrinho_list.html"
     paginate_by = 10
+
+# Exemplo de pesquisa com autocomplete
+#class MotoAutocomplete(LoginRequiredMixin,autocomplete.Select2QuerySetView):
+#    def get_queryset(self):
+#
+#        r = Moto.objects.all()
+#
+#        if self.q:
+#            r = r.filter(
+#                modelo_icontains = self.q
+#            )
+#
+#        return r

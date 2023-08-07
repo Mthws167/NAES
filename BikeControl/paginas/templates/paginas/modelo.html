@@ -37,6 +37,12 @@
                     <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
                             href="http://127.0.0.1:8000/">Início</a>
                     </li>
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'sobre' %}">Sobre</a>
+                    </li>
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
                             href="{% url 'listar-administrador' %}">Administrador</a>
                     </li>
@@ -61,12 +67,6 @@
                     <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
                             href="{% url 'listar-venda' %}">Venda</a>
                     </li>
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
-                            href="{% url 'sobre' %}">Sobre</a></li>
-                    {% if not request.user.is_authenticated %}
-                    <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
-                            href="{% url 'login' %}">Login</a></li>
-                    {% else %}
                     <li class="nav-item" style="color: white; text-shadow: black 0.1em 0.1em 0.2em"><a
                             href="{% url 'logout' %}">Logout</a></li>
                     {% endif %}

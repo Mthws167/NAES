@@ -5,6 +5,7 @@ from .views import ClienteCreate, ClienteUpdate , ClienteDelete,ClienteList
 from .views import MarcaCreate, MarcaUpdate, MarcaDelete,MarcaList
 from .views import ModeloCreate, ModeloUpdate, ModeloDelete,ModeloList
 from .views import MotoCreate, MotoUpdate, MotoDelete,MotoList
+#, MotoAutocomplete
 from .views import VendaCreate, VendaUpdate, VendaDelete,VendaList
 from .views import CarrinhoCreate, CarrinhoUpdate, CarrinhoDelete, CarrinhoList
 
@@ -47,4 +48,7 @@ urlpatterns = [
     path("listar/moto/", MotoList.as_view(), name="listar-moto"),
     path("listar/venda/", VendaList.as_view(), name="listar-venda"),
     path("listar/carrinho/", CarrinhoList.as_view(), name="listar-carrinho"),
+
+    # Exemplo de pesquisa com autocomplete
+    # path('buscar/moto/', MotoAutocomplete.as_view(), name="busca-moto")
 ]

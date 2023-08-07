@@ -19,7 +19,11 @@
 
 
         <button type="submit" class="btn btn-primary">
-            Salvar
+            {% if not request.user.is_authenticated %}
+                Acessar
+            {% else %}
+                Salvar
+            {% endif %}
         </button>
         <br>
         <br>
