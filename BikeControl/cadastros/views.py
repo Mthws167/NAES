@@ -261,40 +261,64 @@ class EmpresaList(LoginRequiredMixin, ListView):
     template_name = "cadastros/empresa_list.html"
     paginate_by = 10
 
+    def get_queryset(self):
+        return Empresa.objects.filter(cadastrado_por = self.request.user)
+
 class AdministradorList(LoginRequiredMixin ,ListView):
     model = Administrador
     template_name = "cadastros/administrador_list.html"
     paginate_by = 10
+
+    def get_queryset(self):
+        return Administrador.objects.filter(usuario = self.request.user)
 
 class ClienteList(LoginRequiredMixin ,ListView):
     model = Cliente
     template_name = "cadastros/cliente_list.html"
     paginate_by = 10
 
+    def get_queryset(self):
+        return Cliente.objects.filter(cadastrado_por = self.request.user)
+
 class MarcaList(LoginRequiredMixin ,ListView):
     model = Marca
     template_name = "cadastros/marca_list.html"
     paginate_by = 10
+
+    def get_queryset(self):
+        return Marca.objects.filter(cadastrado_por = self.request.user)
 
 class ModeloList(LoginRequiredMixin ,ListView):
     model = Modelo
     template_name = "cadastros/modelo_list.html"
     paginate_by = 10
 
+    def get_queryset(self):
+        return Modelo.objects.filter(cadastrado_por = self.request.user)
+
 class MotoList(ListView):
     model = Moto
     template_name = "cadastros/moto_list.html"
     paginate_by = 10
+
+    def get_queryset(self):
+        return Moto.objects.filter(cadastrado_por = self.request.user)
 
 class VendaList(LoginRequiredMixin, ListView):
     model = Venda
     template_name = "cadastros/venda_list.html"
     paginate_by = 10
 
+    def get_queryset(self):
+        return Venda.objects.filter(cadastrado_por = self.request.user)
+
 class CarrinhoList(LoginRequiredMixin, ListView):
     model = Carrinho
     template_name = "cadastros/carrinho_list.html"
     paginate_by = 10
+
+    def get_queryset(self):
+        return Carrinho.objects.filter(cadastrado_por=self.request.user)
 
 # Exemplo de pesquisa com autocomplete
 #class MotoAutocomplete(LoginRequiredMixin,autocomplete.Select2QuerySetView):
