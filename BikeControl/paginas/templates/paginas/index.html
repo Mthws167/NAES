@@ -1,3 +1,69 @@
 {% extends 'paginas/modelo.html' %}
 
 {% load static %}
+
+{% block conteudo %}
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+
+    {% if request.user.is_authenticated %}
+    <div class="container">
+        <div>
+            <h3 class="section-heading text-uppercase">Foram realizadas {{qtde_vendas}} vendas!</h2>
+        </div>
+    </div>
+    {% endif %}
+
+    
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Guia Rápido</h2>
+            </br>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="{% url 'cadastrar-moto' %}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="{%static 'assets/img/vespa.jpg'%}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Moto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="{% url 'cadastrar-carrinho' %}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="{%static 'assets/img/kart.jpg'%}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Carrinho</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <!-- Portfolio item 6-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" href="{% url 'cadastrar-venda' %}">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="{%static 'assets/img/sale.jpg'%}" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Venda</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -90,50 +90,14 @@
     {% block conteudo %}
     <!-- Portfolio Grid-->
     <section class="page-section bg-light" id="portfolio">
-        <!-- TODO mostrar detalhes como as motos mais vendidas -->
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-11">
-                    <h3 class="mt-3 border-bottom">Lista de Vendas</h3>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="mt-3 border-bottom btn btn-danger"><a
-                            href="{% url 'cadastrar-venda' %}" style="color: white;">Novo</a></button>
 
-                </div>
+        {% if request.user.is_authenticated %}
+        <div class="container">
+            <div >
+                <h3 class="section-heading text-uppercase">Foram realizadas {{qtde_vendas}} vendas!</h2>
             </div>
-            {% csrf_token %}
-
-            <table class="table table-striped">
-                <tr>
-                    <th>ID</th>
-                    <th>Empresa</th>
-                    <th>Data Venda</th>
-                    <th>Cliente</th>
-                    <th>Valor</th>
-                    <th>Opções</th>
-                </tr>
-                {% for object in object_list %}
-                <tr>
-                    <td>{{object.pk}}</td>
-                    <td>{{object.empresa.nome}}</td>
-                    <td>{{object.dataVenda}}</td>
-                    <td>{{object.cliente.nome}}</td>
-                    <td>R${{object.valor}}</td>
-                    <td>
-                        <button type="button" class="btn btn-danger"><a href="{% url 'excluir-venda' object.pk %}"
-                                style="color: white;">Excluir</a></button>
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="3">Nenhuma venda cadastrada!</td>
-                </tr>
-                {% endfor %}
-            </table>
-            <br>
-            <br>
-        </div> -->
+        </div>
+        {% endif %}
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Guia Rápido</h2>
@@ -185,9 +149,11 @@
             </div>
         </div>
     </section>
+{% endblock %}
+   
 
     {% block footer %}
-
+    
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
@@ -208,9 +174,7 @@
             </div>
         </div>
     </footer>
-
-    {% endblock %}
-
+    
     {% endblock %}
 
     <!-- Bootstrap core JS-->
