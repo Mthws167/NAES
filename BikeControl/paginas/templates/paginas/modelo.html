@@ -93,7 +93,7 @@
 
         {% if request.user.is_authenticated %}
         <div class="container">
-            <div >
+            <div>
                 <h3 class="section-heading text-uppercase">Foram realizadas {{qtde_vendas}} vendas!</h2>
             </div>
         </div>
@@ -149,11 +149,11 @@
             </div>
         </div>
     </section>
-{% endblock %}
-   
+    {% endblock %}
+
 
     {% block footer %}
-    
+
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
@@ -174,7 +174,7 @@
             </div>
         </div>
     </footer>
-    
+
     {% endblock %}
 
     <!-- Bootstrap core JS-->
@@ -186,6 +186,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script type="text/javascript" src="{%static 'js/scripts/jquery-3.7.1.min.js' %}"></script>
 
     {% block scripts %}
 

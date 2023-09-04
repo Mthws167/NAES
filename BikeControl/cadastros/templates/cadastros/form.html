@@ -17,19 +17,46 @@
 
         {{ form|crispy }}
 
-
-        <button type="submit" class="btn btn-primary">
+        <div class="row">
+            <div class="col-1">
+                <button type="submit" class="btn btn-primary">
+                    {% if not request.user.is_authenticated %}
+                    Acessar
+                    {% else %}
+                    Salvar
+                    {% endif %}
+                </button>
+            </div>
             {% if not request.user.is_authenticated %}
-                Acessar
-            {% else %}
-                Salvar
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-mostrar">
+                    Mostrar Senha
+                </button>
+            </div>
             {% endif %}
-        </button>
+        </div>
         <br>
         <br>
     </div>
-   
+
 </form>
 
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+    $(".btn-mostrar").click(function (e) {
+        if ($("#id_password").prop("type") == 'password') {
+            $("#id_password").prop("type", "text");
+        } else if ($("#id_password").prop("type") == 'text') {
+            $("#id_password").prop("type", "password");
+        }
+    });
+
+
+</script>
 
 {% endblock %}
