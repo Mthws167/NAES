@@ -17,7 +17,7 @@
                 <h3 class="mt-3 border-bottom">Lista de Empresas</h3>
             </div>
             <div class="col-1">
-                <button type="button" class="mt-3 border-bottom btn btn-danger"><a href="{% url 'cadastrar-venda'%}"
+                <button type="button" class="mt-3 border-bottom btn btn-danger"><a href="{% url 'cadastrar-empresa'%}"
                         style="color: white;">Novo</a></button>
         
             </div>
@@ -45,9 +45,9 @@
                 <td>{{obejct.dataCriacao}}</td>
                 <td>{{obejct.dataAtulizacao}}</td>
                 <td>
-                <button type="button" class="btn btn-warning"><a href="{% url 'editar-cliente' obejct.pk %}"
+                <button type="button" class="btn btn-warning"><a href="{% url 'editar-empresa' obejct.pk %}"
                         style="color: white;">Editar</a></button>
-                <button type="button" class="btn btn-danger"><a href="{% url 'excluir-cliente' obejct.pk %}"
+                <button type="button" class="btn btn-danger"><a href="{% url 'excluir-empresa' obejct.pk %}"
                         style="color: white;">Excluir</a></button>
                 </td>
             </tr>
