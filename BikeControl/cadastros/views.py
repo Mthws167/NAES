@@ -49,7 +49,7 @@ class AdministradorCreate(LoginRequiredMixin, CreateView):
 class ClienteCreate(LoginRequiredMixin, CreateView):
     model = Cliente
     fields = ['nome', 'email', 'telefone',
-              'dataNascimento', 'documento', 'senha']
+              'dataNascimento', 'cep','cidade','uf','logradouro','bairro', 'numero','documento', 'senha']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-cliente')
 

@@ -59,6 +59,12 @@ class Cliente(models.Model):
     documento = models.CharField(max_length=14,
                                  unique=True,
                                  help_text="Insira seu CPF")
+    cep = models.CharField(max_length=9, verbose_name="CEP")
+    cidade = models.CharField(max_length=50)
+    uf = models.CharField(max_length=50,verbose_name="UF")
+    logradouro = models.CharField(max_length=50)
+    bairro = models.CharField(max_length=50)
+    numero = models.CharField(max_length=50, verbose_name="Número")
     senha = models.CharField(max_length=50)
     dataCriacao = models.DateTimeField(auto_now_add=True)
     dataAtualizacao = models.DateTimeField(auto_now=True)
