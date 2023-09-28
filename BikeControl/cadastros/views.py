@@ -14,14 +14,19 @@ from decimal import Decimal
 
 from dal import autocomplete
 
+from django.contrib.messages.views import SuccessMessageMixin
+
+
 
 # Create your views here.
 #######################################     CREATE   ######################################################
-class EmpresaCreate(LoginRequiredMixin, CreateView):
+class EmpresaCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Empresa
     fields = ['nome', 'email', 'telefone', 'documento']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('listar-empresa')
+    success_message = "Empresa criada com sucesso!"
+
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -31,12 +36,13 @@ class EmpresaCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class AdministradorCreate(LoginRequiredMixin, CreateView):
+class AdministradorCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Administrador
     fields = ['nome', 'email', 'telefone',
               'dataNascimento', 'documento', 'senha']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('listar-administrador')
+    success_message = "Administrador criado com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -46,12 +52,13 @@ class AdministradorCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class ClienteCreate(LoginRequiredMixin, CreateView):
+class ClienteCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Cliente
     fields = ['nome', 'email', 'telefone',
               'dataNascimento', 'cep','cidade','uf','logradouro','bairro', 'numero','documento', 'senha']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-cliente')
+    success_message = "Cliente criada com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -61,11 +68,12 @@ class ClienteCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class MarcaCreate(LoginRequiredMixin, CreateView):
+class MarcaCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Marca
     fields = ['nome', 'pais']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-marca')
+    success_message = "Marca criada com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -75,11 +83,12 @@ class MarcaCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class ModeloCreate(LoginRequiredMixin, CreateView):
+class ModeloCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Modelo
     fields = ['nome', 'marca']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelo')
+    success_message = "Modelo criado com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -89,12 +98,13 @@ class ModeloCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class MotoCreate(LoginRequiredMixin, CreateView):
+class MotoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Moto
 
     fields = ['modelo', 'quantidade', 'preco']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-moto')
+    success_message = "Moto criada com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -104,11 +114,12 @@ class MotoCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class VendaCreate(LoginRequiredMixin, CreateView):
+class VendaCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Venda
     fields = ['empresa', 'cliente']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-venda')
+    success_message = "Venda criada com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -146,11 +157,12 @@ class VendaCreate(LoginRequiredMixin, CreateView):
         return url
 
 
-class CarrinhoCreate(LoginRequiredMixin, CreateView):
+class CarrinhoCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Carrinho
     fields = ['moto', 'quantidade']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-carrinho')
+    success_message = "Carrinho criado com sucesso!"
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
@@ -162,113 +174,123 @@ class CarrinhoCreate(LoginRequiredMixin, CreateView):
 #######################################     UPDATE   ######################################################
 
 
-class EmpresaUpdate(LoginRequiredMixin, UpdateView):
+class EmpresaUpdate(SuccessMessageMixin,  LoginRequiredMixin, UpdateView):
     model = Empresa
     fields = ['nome', 'email', 'telefone', 'documento']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('listar-empresa')
+    success_message = "Empresa alterada com sucesso!"
 
 
-class AdministradorUpdate(LoginRequiredMixin, UpdateView):
+class AdministradorUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Administrador
     fields = ['nome', 'email', 'telefone',
               'dataNascimento', 'documento', 'senha']
     template_name = "cadastros/form.html"
     success_url = reverse_lazy('listar-administrador')
+    success_message = "Administrador alterado com sucesso!"
 
 
-class ClienteUpdate(LoginRequiredMixin, UpdateView):
+class ClienteUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Cliente
     fields = ['nome', 'email', 'telefone',
               'dataNascimento', 'documento', 'senha']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-cliente')
+    success_message = "Cliente alterado com sucesso!"
 
 
-class MarcaUpdate(LoginRequiredMixin, UpdateView):
+class MarcaUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Marca
     fields = ['nome', 'pais']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-marca')
+    success_message = "Marca alterada com sucesso!"
 
 
-class ModeloUpdate(LoginRequiredMixin, UpdateView):
+class ModeloUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Modelo
     fields = ['nome', 'marca']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelo')
+    success_message = "Modelo alterado com sucesso!"
 
 
-class MotoUpdate(LoginRequiredMixin, UpdateView):
+class MotoUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Moto
     fields = ['modelo', 'quantidade', 'preco']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-moto')
+    success_message = "Moto alterada com sucesso!"
 
 
-class VendaUpdate(LoginRequiredMixin, UpdateView):
+class VendaUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Venda
     fields = ['empresa', 'cliente', 'moto']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-venda')
+    success_message = "Venda alterada com sucesso!"
 
 
-class CarrinhoUpdate(LoginRequiredMixin, UpdateView):
+class CarrinhoUpdate(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Carrinho
     fields = ['moto', 'quantidade']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-carrinho')
+    success_message = "Carrinho alterado com sucesso!"
 
 #######################################     DELETE   ######################################################
 
 
-class EmpresaDelete(LoginRequiredMixin, DeleteView):
+class EmpresaDelete(SuccessMessageMixin,LoginRequiredMixin, DeleteView):
     model = Empresa
     template_name = "cadastros/form-delete.html"
     success_url = reverse_lazy('listar-empresa')
+    success_message = "Empresa excluída com sucesso!"
 
 
-class AdministradorDelete(LoginRequiredMixin, DeleteView):
+class AdministradorDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Administrador
     template_name = "cadastros/form-delete.html"
     success_url = reverse_lazy('listar-administrador')
+    success_message = "administrador excluído com sucesso!"
 
 
-class ClienteDelete(LoginRequiredMixin, DeleteView):
+class ClienteDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Cliente
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-cliente')
+    success_message = "Cliente excluído com sucesso!"
 
-
-class MarcaDelete(LoginRequiredMixin, DeleteView):
+class MarcaDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Marca
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-marca')
+    success_message = "Marca excluída com sucesso!"
 
-
-class ModeloDelete(LoginRequiredMixin, DeleteView):
+class ModeloDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Modelo
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-modelo')
+    success_message = "Modelo excluído com sucesso!"
 
-
-class MotoDelete(LoginRequiredMixin, DeleteView):
+class MotoDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Moto
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-moto')
+    success_message = "Moto excluída com sucesso!"
 
-
-class VendaDelete(LoginRequiredMixin, DeleteView):
+class VendaDelete(SuccessMessageMixin,LoginRequiredMixin, DeleteView):
     model = Venda
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-venda')
+    success_message = "venda excluída com sucesso!"
 
-
-class CarrinhoDelete(LoginRequiredMixin, DeleteView):
+class CarrinhoDelete(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Carrinho
     template_name = 'cadastros/form-delete.html'
     success_url = reverse_lazy('listar-carrinho')
-
+    success_message = "Carrinho excluído com sucesso!"
 #######################################     LIST   ######################################################
 
 
