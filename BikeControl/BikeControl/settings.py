@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "usuarios.apps.UsuariosConfig",
     "debug_toolbar",
+    "django.contrib.humanize",
 ]
 
 MIDDLEWARE = [

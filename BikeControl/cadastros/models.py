@@ -99,7 +99,7 @@ class Moto(models.Model):
     modelo = models.ForeignKey(Modelo, on_delete=models.PROTECT)
     dataFabricacao = models.DateTimeField(auto_now_add=True)
     quantidade = models.IntegerField(default=1)
-    preco = models.FloatField(verbose_name="Preço Unitário")
+    preco = models.DecimalField(decimal_places=2,max_digits=13,verbose_name="Preço Unitário")
 
     cadastrado_por = models.ForeignKey(User, on_delete=models.PROTECT)
 
@@ -110,7 +110,7 @@ class Moto(models.Model):
 class Venda(models.Model):
     empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT)
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
-    valor = models.FloatField(default=0.0)
+    valor = models.DecimalField(decimal_places=2, max_digits=13, default=0.0)
     dataVenda = models.DateTimeField(auto_now_add=True)
 
     # cadastrado por
@@ -129,7 +129,8 @@ class Venda(models.Model):
 class MotoVenda(models.Model):
     venda = models.ForeignKey(Venda, on_delete=models.PROTECT)
     moto = models.ForeignKey(Moto, on_delete=models.PROTECT)
-    preco = models.FloatField(verbose_name="Preço Unitário")
+    preco = models.DecimalField(
+        decimal_places=2, max_digits=13, verbose_name="Preço Unitário")
     quantidade = models.IntegerField()
 
     def __str__(self):
