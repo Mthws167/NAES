@@ -1,6 +1,7 @@
 # pylint: disable=duplicate-key
 import decimal
 from django import template
+from datetime import datetime
 
 register = template.Library()
 
@@ -283,3 +284,14 @@ def sigla_pais(objeto):
     if nome_pais in PAISES:
         return PAISES[nome_pais]
     return nome_pais
+
+
+@register.simple_tag(name='date_format')
+def date_format(objeto, formato):
+    data_nascimento = objeto.dataNascimento
+    try:
+        data_formatada = data_nascimento.strftime(formato)
+        return data_formatada
+    except AttributeError:
+        return ''
+

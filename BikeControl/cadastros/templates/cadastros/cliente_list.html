@@ -4,6 +4,8 @@
 
 {% load crispy_forms_tags %}
 
+{% load meus_filtros %}
+
 {% block titulo %}
 {% endblock %}
 
@@ -42,7 +44,7 @@
                 <td>{{obejct.email}}</td>
                 <td>{{obejct.nome}}</td>
                 <td>{{obejct.telefone}}</td>
-                <td>{{obejct.dataNascimento}}</td>
+                <td>{% date_format obejct '%d/%m/%Y' %}</td>
                 <td>{{obejct.documento}}</td>
                 <td>{{obejct.dataCriacao}}</td>
                 <td>{{obejct.dataAtulizacao}}</td>
