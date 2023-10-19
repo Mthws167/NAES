@@ -4,6 +4,8 @@
 
 {% load crispy_forms_tags %}
 
+{% load meus_filtros %}
+
 {% block titulo %}
 {% endblock %}
 
@@ -35,7 +37,7 @@
             <tr>
                 <td>{{obejct.pk}}</td>
                 <td>{{obejct.nome}}</td>
-                <td>{{obejct.pais}}</td>
+                <td>{{ obejct|sigla_pais }}</td>
                 <td>
                     <button type="button" class="btn btn-warning"><a href="{% url 'editar-marca' obejct.pk %}"
                             style="color: white;">Editar</a></button>
