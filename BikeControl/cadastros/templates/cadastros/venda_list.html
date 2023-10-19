@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% load meus_filtros %}
 
 {% load crispy_forms_tags %}
@@ -41,7 +43,7 @@
                 <td>{{object.empresa.nome}}</td>
                 <td>{{object.dataVenda}}</td>
                 <td>{{object.cliente.nome}}</td>
-                <td>R${{object.valor|desconto3}}</td>
+                <td>R${{object.valor | desconto3}}</td>
                 <td>
                     <button type="button" class="btn btn-danger"><a href="{% url 'excluir-venda' object.pk %}"
                             style="color: white;">Excluir</a></button>

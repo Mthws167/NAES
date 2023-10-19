@@ -45,7 +45,7 @@
                 <td>{{obejct.modelo.marca.nome}}</td>
                 <td>{{obejct.dataFabricacao}}</td>
                 <td>{{obejct.quantidade}}</td>
-                <td>R$ {% custofrete obejct.preco 2 30 %}</td>
+                <td>R$ {% custofrete obejct.preco 25.25 15 %}</td>
                 <td>
                     <button type="button" class="btn btn-warning"><a href="{% url 'editar-moto' obejct.pk %}"
                             style="color: white;">Editar</a></button>
