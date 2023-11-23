@@ -19,7 +19,7 @@
         {{ form|crispy }}
     
         <div class="row">
-            <div class="col-1">
+            <div class="col-11">
                 <button type="submit" class="btn btn-primary">
                     {% if not request.user.is_authenticated %}
                     Acessar
@@ -27,6 +27,11 @@
                     Salvar
                     {% endif %}
                 </button>
+                {% if not request.user.is_authenticated %}
+                    <button type="button" onclick="window.location.href = 'http://127.0.0.1:8000/registrar/'" class="btn btn-primary">
+                        Cadastrar-se
+                    </button>
+                {% endif %}
             </div>
             {% if not request.user.is_authenticated %}
             <div class="col">
