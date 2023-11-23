@@ -123,7 +123,7 @@ class VendaCreate(SuccessMessageMixin, LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
-
+        form.instance.valor = 0
         url = super().form_valid(form)
 
         prod_carrinho = Carrinho.objects.all()
